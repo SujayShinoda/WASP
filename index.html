@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://7nqdg1dy.dora.run/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    
+    <meta name="description" content="Dora is a cloud-based design collaboration platform for creating responsive apps and websites without coding.">
+    <meta name="keywords" content="Dora,NoCode,Design">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Dora">
+    <link rel="apple-touch-icon" href="https://cdn-static-e.dora.run/dora_runner/icons/Icon-192.236e1b6a908f48a9.png">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="https://cdn-static-e.dora.run/dora_runner/favicon.4ee7a8ea1aaf88ec.png">
+    <!--<base href="/">--><base href=".">
+
+    <title>Page</title>
+    <link rel="manifest" href="https://cdn-static-e.dora.run/dora_runner/manifest.6e8af1322edf3d04.json">
+
+    
+      <script src="./Page_files/bundle.min.js.download" integrity="sha384-5sJSEjxn1ex+Fvt1DYkWgGzMvqhd8CyCn1oqZMMshEzFiQNqb8LiDE6v6U2fX2pp" crossorigin="anonymous"></script>
+      <script>
+        Sentry.init({
+          dsn: "https://c1a0c96cec54481aba6b4510bae37d3c@o1296719.ingest.sentry.io/4505130475323392",
+          release: "dora_runner_shell@0.2.74-4",
+          environment: "online",
+          initialScope: {"tags":{"app":"dora_runner_shell"}},
+          denyUrls: [
+            // Chrome extensions
+            /extensions\//i,
+            /^chrome:\/\//i,
+            /^chrome-extension:\/\//i,
+          ],
+        });
+      </script>
+    
+
+    <script>
+      window.captureError = function (event, source, lineno, colno, error) {
+        window.captureErrorDart && window.captureErrorDart(event, source, lineno, colno, error)
+      }
+    </script>
+    <script>
+      (function (global) {
+        var queryParameters = new URLSearchParams(global.location.search);
+        var useCanvasKit = queryParameters.get('__dora_renderer') === 'canvaskit';
+        if (useCanvasKit) {
+          global.flutterWebRenderer = "canvaskit";
+        } else {
+          global.flutterWebRenderer = "html";
+        }
+      })(window);
+      (function (global) {
+        document.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+        })
+      })(window);
+    </script>
+
+    <style>
+      body {
+        position: fixed;
+        inset: 0px;
+        overflow: hidden;
+        padding: 0px;
+        margin: 0px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .mask-layer {
+        width: max(150vw, 150vh);
+        height: max(150vw, 150vh);
+        background-color: transparent;
+        border-color: white;
+        border-top-width: 100vh;
+        border-bottom-width: 100vh;
+        border-left-width: 100vw;
+        border-right-width: 100vw;
+        border-style: solid;
+        border-radius: 50%;
+        animation: clipSpread 1s ease;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        will-change: width, height;
+      }
+
+      #loading {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+      }
+
+      #loading img {
+        width: 80px;
+        height: 80px;
+      }
+
+      #loading #loading_gif_white {
+        display: none;
+      }
+
+      #loading.dark-mode #loading_gif_white {
+        display: initial;
+      }
+
+      #loading.dark-mode #loading_gif {
+        display: none;
+      }
+
+
+      #loading.home-page {
+        background-color: #246bfc;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+      }
+
+      #loading.ai {
+        background-color: #000000;
+      }
+      #loading.expo {
+        background: linear-gradient(180deg, #0043FF 0%, #000000 100%);
+      }
+
+      #loading.home-page #white_circle {
+        position: relative;
+        background-color: white;
+        border-radius: 40vh;
+        width: 39vh;
+        height: 39vh;
+        animation: enterZoomIn 1s ease;
+        transform: rotate(-30deg) scale(1);
+        --original-angle: 30;
+      }
+
+      #loading.ai #white_circle, #loading.expo #white_circle {
+        background-color: transparent;
+      }
+
+      #loading.ai #blue_circle, #loading.expo #blue_circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #loading.expo #blue_circle {
+        box-shadow: 0px -23.099px 33.95px 0px #256CFEB2;
+        transform: rotate(180deg);
+      }
+
+      #loading.home-page img, #loading.home-page video {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 500px;
+      }
+
+      #loading.home-page #logomark {
+        width: 16vh;
+        height: 16vh;
+        animation: enterZoomIn 1s ease;
+      }
+
+      #loading.home-page #loading_gif {
+        display: none;
+        width: 16vh;
+        height: 16vh;
+      }
+
+      #loading.expo #loading_gif, #loading.expo #logomark {
+        width: 38vh;
+        height: 38vh;
+      }
+
+      #loading.home-page #border_text {
+        width: 33.8vh;
+        height: 33.8vh;
+        animation: enterZoomIn 1s ease;
+      }
+
+      #loading.home-page #progress {
+        display: block;
+        align-items: center;
+        font: 24pt sans-serif;
+        color: #3b6bfa;
+        text-align: center;
+        transform: rotate(180deg);
+      }
+
+      #loading.ai #progress, #loading.expo #progress {
+        color: #ffffff;
+      }
+
+      @keyframes rotateRight {
+        from {
+          transform: rotate(0);
+
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes rotateLeft {
+        from {
+          transform: rotate(0);
+
+        }
+
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      @keyframes enterZoomIn {
+        from {
+          scale: 0;
+        }
+
+        to {
+          scale: 1;
+        }
+      }
+
+      @keyframes clipSpread {
+        from {
+          width: 0;
+          height: 0;
+        }
+
+        to {
+          width: max(150vw, 150vh);
+          height: max(150vw, 150vh);
+        }
+      }
+
+      @media screen and (min-width: 0px) and (max-width:1024px) {
+        #loading.home-page #white_circle {
+          border-radius: 40vw;
+          width: 40vw;
+          height: 40vw;
+          transform: rotate(-120deg) scale(1);
+          --original-angle: 120;
+        }
+
+        #loading.home-page #logomark, #loading.home-page #loading_gif {
+          width: 19vw;
+          height: 19vw;
+        }
+
+        #loading.expo #logomark, #loading.expo #loading_gif {
+          width: 40vw;
+          height: 40vw;
+        }
+
+        #loading.home-page #border_text {
+          width: 36vw;
+          height: 36vw;
+        }
+
+        #loading.home-page #progress {
+          font: 8pt sans-serif;
+        }
+      }
+
+      @media screen and (min-width: 512px) and (max-width:1024px) {
+        #loading.home-page #progress {
+          font: 16pt sans-serif;
+        }
+      }
+
+    </style>
+
+    <script>
+      window.startPreload = function () {
+        let elements = document.querySelectorAll('head > link[class="preload"]');
+        for (let elem of elements) {
+          var link = document.createElement("link");
+          link.rel = 'prefetch';
+          link.href = elem.href;
+          link.as = elem.as;
+          link.setAttribute("crossorigin", elem.getAttribute("crossorigin"));
+          document.head.appendChild(link);
+          elem.remove();
+        }
+      }
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script defer="" src="./Page_files/js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.MEASUREMENT_ID = 'G-JPSGKY82PS';
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', MEASUREMENT_ID);
+    </script>
+
+    
+    
+      <link rel="preload" href="https://cdn-static-e.dora.run/fonts/fonts3/Roboto-regular.woff2" as="font" crossorigin="anonymous">
+    
+
+    
+    <script>
+      (function () {
+        var interceptTable = {
+  "/assets/FontManifest.json": "[{\"family\":\"packages/dora_icons/DoraIcon12\",\"fonts\":[{\"asset\":\"https://cdn-static-e.dora.run/dora_runner/assets/packages/dora_icons/fonts/icon_12.de89b2f2ac9418c7.woff2\"}]},{\"family\":\"packages/dora_icons/DoraIcon16\",\"fonts\":[{\"asset\":\"https://cdn-static-e.dora.run/dora_runner/assets/packages/dora_icons/fonts/icon_16.1aa59a5f7ba164f6.woff2\"}]},{\"family\":\"packages/dora_icons/DoraIcon24\",\"fonts\":[{\"asset\":\"https://cdn-static-e.dora.run/dora_runner/assets/packages/dora_icons/fonts/icon_24.1fc707a785b64045.woff2\"}]},{\"family\":\"packages/dora_icons/DoraIcon32\",\"fonts\":[{\"asset\":\"https://cdn-static-e.dora.run/dora_runner/assets/packages/dora_icons/fonts/icon_32.7cc56adb42e4f0e0.woff2\"}]}]",
+  "/assets/NOTICES": "Dora Inc.",
+  "/version.json": "{\"app_name\":\"dora_runner\",\"version\":\"0.2.74-4\",\"package_name\":\"dora_runner\"}"
+}
+
+        function asciiToArrayBuffer(str) {
+          var buf = new ArrayBuffer(str.length), bufView = new Uint8Array(buf);
+          for (var i = 0, strLen = str.length; i < strLen; i++) {
+            bufView[i] = str.charCodeAt(i);
+          }
+          return buf;
+        }
+
+        var _realOpen = window.XMLHttpRequest.prototype.open;
+        var _realSend = window.XMLHttpRequest.prototype.send;
+
+        window.XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
+          for (var prefix in interceptTable) {
+            var pathname = new URL(url, 'https://placeholder').pathname;
+
+            if (pathname.startsWith(prefix)) {
+              this._response = interceptTable[prefix];
+              return;
+            }
+          }
+
+          return _realOpen.apply(this, arguments);
+        };
+
+        window.XMLHttpRequest.prototype.send = function () {
+          if (!this._response) {
+            return _realSend.apply(this, arguments);
+          }
+
+          var response = asciiToArrayBuffer(this._response);
+          Object.defineProperty(this, 'status', { value: 200 });
+          Object.defineProperty(this, 'readyState', { value: 4 });
+          Object.defineProperty(this, 'response', { value: response });
+
+          this.dispatchEvent(new Event('readystatechange'));
+          this.dispatchEvent(new Event('load'));
+        };
+      })();
+    </script>
+    
+      <script>window.FLUTTER_PRE_ASSET_BUNDLE = {
+  "AssetManifest.json": "{\"images/dora_madeindoratag_white.webp\":[\"images/dora_madeindoratag_white.91514bb1d96c06d5.webp\"],\"images/loading.gif\":[\"images/loading.b59c51fab6a8d60f.gif\"],\"images/loading_white.gif\":[\"images/loading_white.80ac0bd6a33360bc.gif\"],\"images/topbar_logo_20.png\":[\"images/topbar_logo_20.9712852f086aa916.png\"],\"packages/core/images/Page/404.png\":[\"packages/core/images/Page/404.23740a9206e0313f.png\"],\"packages/core/images/Page/500.png\":[\"packages/core/images/Page/500.9fe6fbe893865211.png\"],\"packages/core/images/Page/502_503.png\":[\"packages/core/images/Page/502_503.942d3200a3c31b10.png\"],\"packages/core/images/Page/ArrowRight.png\":[\"packages/core/images/Page/ArrowRight.a19cbaa6ec280fab.png\"],\"packages/core/images/Page/dora.png\":[\"packages/core/images/Page/dora.771762b2765eeeba.png\"],\"packages/core/images/Page/logo.png\":[\"packages/core/images/Page/logo.a7df27d66ed7f226.png\"],\"packages/core/images/animate.png\":[\"packages/core/images/animate.d702f788285ebedc.png\"],\"packages/core/images/canvas_indicator/Cursor.png\":[\"packages/core/images/canvas_indicator/Cursor.7460e7acd61831bf.png\"],\"packages/core/images/client_variable.png\":[\"packages/core/images/client_variable.2f356d915e01e1c0.png\"],\"packages/core/images/drivers/fixAddCursorHover.png\":[\"packages/core/images/drivers/fixAddCursorHover.1f1892017d15eb3b.png\"],\"packages/core/images/drivers/fixAddDef.png\":[\"packages/core/images/drivers/fixAddDef.ab4e1f2a14139e1c.png\"],\"packages/core/images/drivers/fixCursorHover.png\":[\"packages/core/images/drivers/fixCursorHover.6f03a4c492258a3f.png\"],\"packages/core/images/drivers/fixCursorSel.png\":[\"packages/core/images/drivers/fixCursorSel.5b1a3d4cd285a599.png\"],\"packages/core/images/drivers/fixDef.png\":[\"packages/core/images/drivers/fixDef.b2e0bc0bedbf87d3.png\"],\"packages/core/images/drivers/fixDel.png\":[\"packages/core/images/drivers/fixDel.8531251cc9fd56ce.png\"],\"packages/core/images/drivers/fixIndicatorSel.png\":[\"packages/core/images/drivers/fixIndicatorSel.06ee37cb127abbc3.png\"],\"packages/core/images/drivers/fixIndicatorSelCursorSel.png\":[\"packages/core/images/drivers/fixIndicatorSelCursorSel.e5c83359f231e5c0.png\"],\"packages/core/images/drivers/keyAddCursorHover.png\":[\"packages/core/images/drivers/keyAddCursorHover.4b79109676471eb2.png\"],\"packages/core/images/drivers/keyAddCursorSelHover.png\":[\"packages/core/images/drivers/keyAddCursorSelHover.fdd7d1177aa2f013.png\"],\"packages/core/images/drivers/keyAddDef.png\":[\"packages/core/images/drivers/keyAddDef.ffed4dce7c298ae9.png\"],\"packages/core/images/drivers/keyCursorHover.png\":[\"packages/core/images/drivers/keyCursorHover.670f1fce0af91b46.png\"],\"packages/core/images/drivers/keyCursorSel.png\":[\"packages/core/images/drivers/keyCursorSel.9283e2928a195fa9.png\"],\"packages/core/images/drivers/keyDef.png\":[\"packages/core/images/drivers/keyDef.42d6d707c3d5fee5.png\"],\"packages/core/images/drivers/keyDelCursorSel.png\":[\"packages/core/images/drivers/keyDelCursorSel.1fd34ad71f203f5c.png\"],\"packages/core/images/drivers/keyDelCursorSelHover.png\":[\"packages/core/images/drivers/keyDelCursorSelHover.9c2d3a7662217d77.png\"],\"packages/core/images/drivers/keyHoverDelIndicatiorSelCursorSel.png\":[\"packages/core/images/drivers/keyHoverDelIndicatiorSelCursorSel.5d30c97f24dbd738.png\"],\"packages/core/images/drivers/keyIndicatiorSelCursorSel.png\":[\"packages/core/images/drivers/keyIndicatiorSelCursorSel.7e13509f97764e48.png\"],\"packages/core/images/drivers/keyIndicatorSel.png\":[\"packages/core/images/drivers/keyIndicatorSel.4972191e7e69e58b.png\"],\"packages/core/images/entity.png\":[\"packages/core/images/entity.072c6cfc3be5f208.png\"],\"packages/core/images/entity_attribute.png\":[\"packages/core/images/entity_attribute.e399464d97990f50.png\"],\"packages/core/images/event.png\":[\"packages/core/images/event.52f38b8db5b5c4fc.png\"],\"packages/core/images/exp_dot_delete.png\":[\"packages/core/images/exp_dot_delete.8af5e0e35bed795b.png\"],\"packages/core/images/exp_dot_delete_hover.png\":[\"packages/core/images/exp_dot_delete_hover.17848d4a5b79d481.png\"],\"packages/core/images/folder_close.png\":[\"packages/core/images/folder_close.d9fcfddb16789c77.png\"],\"packages/core/images/groovy_action.png\":[\"packages/core/images/groovy_action.2e814b7f622630b9.png\"],\"packages/core/images/input_parameter.png\":[\"packages/core/images/input_parameter.892628e95e5fda27.png\"],\"packages/core/images/loading.gif\":[\"packages/core/images/loading.b59c51fab6a8d60f.gif\"],\"packages/core/images/loading_white.gif\":[\"packages/core/images/loading_white.80ac0bd6a33360bc.gif\"],\"packages/core/images/logic_action.png\":[\"packages/core/images/logic_action.199bf27602ad3aea.png\"],\"packages/core/images/logic_generic_action.png\":[\"packages/core/images/logic_generic_action.95c11f77efac955c.png\"],\"packages/core/images/logic_go_page.png\":[\"packages/core/images/logic_go_page.b4425b1f32f5268b.png\"],\"packages/core/images/logic_server_action.png\":[\"packages/core/images/logic_server_action.3c9a7980ed666346.png\"],\"packages/core/images/out_parameter.png\":[\"packages/core/images/out_parameter.1bc2c153ab414e5c.png\"],\"packages/core/images/page.png\":[\"packages/core/images/page.419218ff62e76224.png\"],\"packages/core/images/progress_indicator_blue.png\":[\"packages/core/images/progress_indicator_blue.7470ceac08c08ce2.png\"],\"packages/core/images/progress_indicator_white.png\":[\"packages/core/images/progress_indicator_white.eb87d1662e561006.png\"],\"packages/core/images/ref_entity_identifier.png\":[\"packages/core/images/ref_entity_identifier.65272bf8867be7d9.png\"],\"packages/core/images/server_data_action.png\":[\"packages/core/images/server_data_action.b0776ae48efa7fa1.png\"],\"packages/core/images/variable.png\":[\"packages/core/images/variable.3d2de480f7460bc6.png\"],\"packages/dora_icons/fonts/icon_12.woff2\":[\"packages/dora_icons/fonts/icon_12.de89b2f2ac9418c7.woff2\"],\"packages/dora_icons/fonts/icon_16.woff2\":[\"packages/dora_icons/fonts/icon_16.1aa59a5f7ba164f6.woff2\"],\"packages/dora_icons/fonts/icon_24.woff2\":[\"packages/dora_icons/fonts/icon_24.1fc707a785b64045.woff2\"],\"packages/dora_icons/fonts/icon_32.woff2\":[\"packages/dora_icons/fonts/icon_32.7cc56adb42e4f0e0.woff2\"],\"packages/renderer_flutter/images/Widget/component_16x.png\":[\"packages/renderer_flutter/images/Widget/component_16x.ab2e5463c4467472.png\"],\"packages/renderer_flutter/images/Widget/image_16x.png\":[\"packages/renderer_flutter/images/Widget/image_16x.03a031cc8eb15f51.png\"],\"packages/renderer_flutter/images/threed_in_list.png\":[\"packages/renderer_flutter/images/threed_in_list.d509a8cdb10ac389.png\"],\"packages/renderer_flutter/images/threed_placeholder.png\":[\"packages/renderer_flutter/images/threed_placeholder.457a031bb868fdb3.png\"],\"packages/renderer_flutter/loading-3d.json\":[\"packages/renderer_flutter/loading-3d.76e37912741afb0b.json\"],\"packages/renderer_flutter/threed_renderer/build/chunk.bundle.js\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/chunk.bundle.js\"],\"packages/renderer_flutter/threed_renderer/build/chunk.bundle.js.LICENSE.txt\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/chunk.bundle.js.LICENSE.txt\"],\"packages/renderer_flutter/threed_renderer/build/chunk.bundle.js.map\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/chunk.bundle.js.map\"],\"packages/renderer_flutter/threed_renderer/build/draco_decoder_gltf.wasm\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/draco_decoder_gltf.wasm\"],\"packages/renderer_flutter/threed_renderer/build/draco_encoder.wasm\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/draco_encoder.wasm\"],\"packages/renderer_flutter/threed_renderer/build/glbCompress.js\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/glbCompress.js\"],\"packages/renderer_flutter/threed_renderer/build/glbCompress.js.LICENSE.txt\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/glbCompress.js.LICENSE.txt\"],\"packages/renderer_flutter/threed_renderer/build/glbCompress.js.map\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/glbCompress.js.map\"],\"packages/renderer_flutter/threed_renderer/build/index.html\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/index.html\"],\"packages/renderer_flutter/threed_renderer/build/index.html.ejs\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/index.html.ejs\"],\"packages/renderer_flutter/threed_renderer/build/index.js\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/index.js\"],\"packages/renderer_flutter/threed_renderer/build/index.js.LICENSE.txt\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/index.js.LICENSE.txt\"],\"packages/renderer_flutter/threed_renderer/build/index.js.map\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/index.js.map\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/10174-1-ImperialAT-ST-UCS.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/10174-1-ImperialAT-ST-UCS.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/1621-1-LunarMPVVehicle.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/1621-1-LunarMPVVehicle.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/30023-1-Lighthouse.ldr_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/30023-1-Lighthouse.ldr_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/30051-1-X-wingFighter-Mini.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/30051-1-X-wingFighter-Mini.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/30054-1-AT-ST-Mini.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/30054-1-AT-ST-Mini.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/4489-1-AT-AT-Mini.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/4489-1-AT-AT-Mini.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/4494-1-Imperial Shuttle-Mini.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/4494-1-Imperial Shuttle-Mini.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/4838-1-MiniVehicles.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/4838-1-MiniVehicles.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/4915-1-MiniConstruction.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/4915-1-MiniConstruction.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/4918-1-MiniFlyers.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/4918-1-MiniFlyers.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/5935-1-IslandHopper.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/5935-1-IslandHopper.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/6965-1-TIEIntercep_4h4MXk5.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/6965-1-TIEIntercep_4h4MXk5.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/6966-1-JediStarfighter-Mini.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/6966-1-JediStarfighter-Mini.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/7140-1-X-wingFighter.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/7140-1-X-wingFighter.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/889-1-RadarTruck.mpd_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/889-1-RadarTruck.mpd_Packed.mpd\"],\"packages/renderer_flutter/threed_renderer/libs/officialLibrary/models/car.ldr_Packed.mpd\":[\"packages/renderer_flutter/threed_renderer.b765807aedc1cf92/libs/officialLibrary/models/car.ldr_Packed.mpd\"],\"packages/ui_kit/fonts.json\":[\"packages/ui_kit/fonts.ec57c5c8564ac2e4.json\"],\"packages/youtube_player/html/player.html\":[\"packages/youtube_player/html/player.c6ff30e670093136.html\"],\"packages/youtube_player/images/back_to_start.png\":[\"packages/youtube_player/images/back_to_start.a52f343e5323c817.png\"],\"packages/youtube_player/images/mute.png\":[\"packages/youtube_player/images/mute.95b04f47768ca4ad.png\"],\"packages/youtube_player/images/play.png\":[\"packages/youtube_player/images/play.1e2d86f0812b3b25.png\"],\"packages/youtube_player/images/stop.png\":[\"packages/youtube_player/images/stop.e83acc101c599f14.png\"],\"packages/youtube_player/images/unmute.png\":[\"packages/youtube_player/images/unmute.0ef0737e7e8dc720.png\"],\"packages/youtube_player/images/youtube_logo.png\":[\"packages/youtube_player/images/youtube_logo.6b903e9130dcbb5d.png\"]}",
+  "FontManifest.json": "[{\"family\":\"packages/dora_icons/DoraIcon12\",\"fonts\":[{\"asset\":\"https://cdn-static-e.dora.run/dora_runner/assets/packages/dora_icons/fonts/icon_12.de89b2f2ac9418c7.woff2\"}]},{\"family\":\"packages/dora_icons/DoraIcon16\",\"fonts\":[{\"asset\":\"https://cdn-static-e.dora.run/dora_runner/assets/packages/dora_icons/fonts/icon_16.1aa59a5f7ba164f6.woff2\"}]},{\"family\":\"packages/dora_icons/DoraIcon24\",\"fonts\":[{\"asset\":\"https://cdn-static-e.dora.run/dora_runner/assets/packages/dora_icons/fonts/icon_24.1fc707a785b64045.woff2\"}]},{\"family\":\"packages/dora_icons/DoraIcon32\",\"fonts\":[{\"asset\":\"https://cdn-static-e.dora.run/dora_runner/assets/packages/dora_icons/fonts/icon_32.7cc56adb42e4f0e0.woff2\"}]}]",
+  "NOTICES": "Dora Inc."
+}</script>
+    
+  <script>window.DORA_PROJECT_PREPARATION="{\"summary\":{\"fonts\":{\"Poppins-SemiBold\":[\"WlazQV0w6\",\"WnopfAiEz\",\"Wgw1JUJKq\",\"WbO659zc8\",\"WgP6zFY4M\",\"WPyraKSLv\",\"WUjTkE1Ji\",\"Wxdm38f29\"],\"Poppins-Medium\":[\"WchzhXKnZ\",\"W9S7URY62\",\"WzHokDtZh\",\"WFTRBnTb6\",\"Wcgg9RBL9\",\"WJNc5yeIL\",\"WNNPvEUm0\"],\"Poppins-Bold\":[\"WYVcFdEPH\",\"WCLnrkc4X\",\"WgtSIE016\",\"Wv4gz8xrc\",\"WohSkiRiH\",\"WADBcs8Xx\",\"WudSrSzGW\"]},\"last_modified\":1685723204815},\"domain\":\"7nqdg1dy.dora.run\",\"id\":\"5641\",\"api\":{\"/action\":{\"version\":\"1fe1b329-123f-43b0-943e-e3bdd7d48067\"},\"/project/get\":{\"version\":\"1f4c0a22-d811-4686-98c5-559859b57fcd\"},\"/meta\":{\"version\":\"0c469f34-f093-44ef-a215-47dcb3636792\"}}}";</script><link rel="preload" href="https://cdn-static-e.dora.run/fonts/fonts3/Poppins-600.woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://cdn-static-e.dora.run/fonts/fonts3/Poppins-500.woff2" as="font" crossorigin="anonymous"><link rel="preload" href="https://cdn-static-e.dora.run/fonts/fonts3/Poppins-700.woff2" as="font" crossorigin="anonymous"><script src="./Page_files/main.dart.aac7e335b8d407d2.js.download"></script><style></style><meta flt-viewport="" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><meta id="flutterweb-theme" name="theme-color" content="#000000"><link rel="prefetch" href="https://cdn-design-e.dora.run/BH/9t/yg/BH9tyg4T2ZNGPwcTWAwij8.glb" as="fetch" crossorigin="anonymous"><link rel="prefetch" href="https://cdn-static-e.dora.run/dora_runner/assets/packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/index.js" as="script" crossorigin="anonymous"><link rel="prefetch" href="https://cdn-static-e.dora.run/dora_runner/assets/packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/glbCompress.js" as="script" crossorigin="anonymous"><link rel="prefetch" href="https://cdn-static-e.dora.run/dora_runner/assets/packages/renderer_flutter/threed_renderer.b765807aedc1cf92/build/chunk.bundle.js" as="script" crossorigin="anonymous"><link rel="prefetch" href="https://cdn-zip-us-aws-e.dora.run/signals@1.0.0/dist/signals.min.js" as="script" crossorigin="anonymous"></head>
+
+  <body flt-renderer="html (auto-selected)" flt-build-mode="release" spellcheck="false" style="position: fixed; inset: 0px; overflow: hidden; padding: 0px; margin: 0px; user-select: none; touch-action: none; font: 14px sans-serif; color: red;" data-new-gr-c-s-check-loaded="14.1112.0" data-gr-ext-installed="">
+    <div id="dora_edit_skeleton">
+    </div>
+    <script>
+      if (/^\/e\/\d+/.test(window.document.location.pathname)) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "https://cdn-static-e.dora.run/dora_runner/edit_skeleton.c450e496fc6fb286.html", false);
+        xmlhttp.send();
+        var dom = document.getElementById('dora_edit_skeleton');
+        if (dom) {
+          dom.innerHTML = xmlhttp.responseText;
+        }
+      }
+    </script>
+    <div id="loading" data-pg="100" data-mode="default" style="display: none; z-index: initial;">
+            <picture>
+              <img id="loading_gif" src="./Page_files/loading.be79e9c282eb3c27.webp" alt="loading">
+            </picture>
+            </div>
+    <script>
+      (function (global) {
+        var loading = document.getElementById('loading');
+        const ishomepage = isHomePage();
+        const disableloading = disableLoading();
+        const ispreview = isPreview();
+        function disableLoading() {
+          let queryParams = window.location.search;
+          return queryParams.includes('__dora_disable_loading=true');
+        }
+        function isHomepageByHost() {
+          const homeHosts = [
+            'www.dora.run',
+            'beta.dora.run',
+            'test.dora.run',
+            'prerelease.dora.run',
+            'localhost',
+          ];
+          const swimlaneKey = 'swimlane.dora.run'
+          const currentHostname = location.hostname;
+          return (homeHosts.indexOf(currentHostname) != -1 || currentHostname.indexOf(swimlaneKey) != -1) && (location.pathname == '/' || location.pathname == '/9iFDgejkpz') && !location.search.includes('uri');
+        }
+        function isHomeProject() {
+          try {
+            const data = window.DORA_PROJECT_PREPARATION;
+            if (!data) {
+              return false;
+            }
+            const parsedData = JSON.parse(data);
+            const id = parsedData.id;
+            if (typeof id === 'undefined' || id === null) {
+              return false;
+            }
+            const idAsNumber = Number(id);
+            if (isNaN(idAsNumber)) {
+              return false;
+            }
+            return idAsNumber === 1;
+          } catch (error) {
+            return false;
+          }
+        }
+        function isHomePage() {
+          const path = window.location;
+          if (isHomeProject()) {
+            return path.pathname === '/' || path.pathname === '/9iFDgejkpz';
+          } else {
+            return isHomepageByHost();
+          }
+        }
+        function isAI() {
+          return window.location.pathname === '/ai' && isHomeProject();
+        }
+        function isExpo() {
+          const path = window.location;
+          return (path.hostname === 'expo.dora.run' || path.hostname === 'expo.prerelease.dora.run') && (path.pathname === '/ai' || path.pathname === '/');
+        }
+        function isPreview() {
+          let regexp = /preview(-test|-prerelease)?\.dora\.run/i;
+          return regexp.test(window.location.href);
+        }
+        function initLoadingMode() {
+          if (loading.dataset.mode === 'homepage' && (ishomepage || isAI() || isExpo())) {
+            return;
+          }
+          if (loading.dataset.mode === 'default' && !ishomepage) {
+            return;
+          }
+          loading.style.display = 'flex';
+          loading.style.zIndex = 100;
+          if (ishomepage && !disableloading) {
+            // home page loading
+            loading.innerHTML = `
+            <div id="white_circle">
+              <span id="progress"></span>
+            </div>
+            <picture>
+              <img id="logomark" src="https://cdn-static-e.dora.run/dora_runner/logomark.20931c9e2cbbf837.png" alt="loading">
+              <video id="loading_gif" autoplay loop muted>
+                <source src="https://cdn-static-e.dora.run/dora_runner/loading.7b9d970a29f1583c.mp4" type="video/mp4">
+              </video>
+              <img id="border_text" src="https://cdn-static-e.dora.run/dora_runner/Vector.1277ff774489bb0a.png" alt="border_text">
+            </picture>
+            `;
+            loading.classList.add('home-page');
+            loading.dataset.mode = 'homepage';
+          } else if (isAI()) {
+            // ai page loading
+            loading.innerHTML = `
+            <div id="white_circle">
+              <span id="progress"></span>
+              <img id="blue_circle" src="https://cdn-static-e.dora.run/dora_runner/ai_circle.03262a790699f776.png">
+            </div>
+            <picture>
+              <img id="logomark" src="https://cdn-static-e.dora.run/dora_runner/ai_logomark.be18b93a6a705616.png" alt="loading">
+              <video id="loading_gif" autoplay loop muted>
+                <source src="https://cdn-static-e.dora.run/dora_runner/ai_loading.e07c4dcbcc165a09.mp4" type="video/mp4">
+              </video>
+              <img id="border_text" src="https://cdn-static-e.dora.run/dora_runner/Vector.1277ff774489bb0a.png" alt="border_text">
+            </picture>
+            `;
+            loading.classList.add('home-page');
+            loading.classList.add('ai');
+            loading.dataset.mode = 'homepage';
+          } else if (isExpo())  {
+            loading.innerHTML = `
+            <div id="white_circle">
+              <span id="progress"></span>
+              <img id="blue_circle" src="https://cdn-static-e.dora.run/dora_runner/expo_circle.75e6325a91325ab3.png">
+            </div>
+            <picture>
+              <img id="logomark" src="https://cdn-static-e.dora.run/dora_runner/expo_logomark.6c524e4f4dff6feb.png" alt="loading">
+              <video id="loading_gif" autoplay loop muted>
+                <source src="https://cdn-static-e.dora.run/dora_runner/expo_loading.2deff4becfb88f44.mp4" type="video/mp4">
+              </video>
+              <img id="border_text" src="https://cdn-static-e.dora.run/dora_runner/expo_vector.9fb61d172d147be7.png" alt="border_text">
+            </picture>
+            `;
+            loading.classList.add('home-page');
+            loading.classList.add('expo');
+            loading.dataset.mode = 'homepage';
+          } else {
+            // default page loading
+            // if (isPreview) {
+            //   loading.classList.add('dark-mode');
+            // }
+            loading.classList.remove('home-page');
+            loading.dataset.mode = 'default';
+            loading.innerHTML = `
+            <picture>
+              <img id="loading_gif" src="https://cdn-static-e.dora.run/dora_runner/loading.be79e9c282eb3c27.webp" alt="loading">
+            </picture>
+            `;
+          }
+        }
+
+        function renderDoraLoading(progress) {
+          if ((ishomepage || isAI() || isExpo()) && !disableloading) {
+            renderDoraHomePageLoading(progress);
+          } else {
+            renderDoraDefaultPageLoading(progress);
+          }
+        }
+
+        function renderDoraDefaultPageLoading(progress) {
+          loading.dataset.pg = progress;
+        }
+
+        function renderDoraHomePageLoading(progress) {
+          var loading = document.getElementById('loading');
+          if (!loading) return;
+
+          progressQueue.push(parseFloat(progress));
+          endProgress = Math.max.apply(null, progressQueue);
+          if (progressQueue.length >= 2) {
+            return;
+          }
+          let text = document.getElementById('progress');
+          let circle = document.getElementById('white_circle');
+          const originalAngle = parseFloat(getComputedStyle(circle).getPropertyValue('--original-angle'));
+
+          let done = false;
+          function stepAnimation(timestamp) {
+            if (done) {
+              return;
+            }
+            if (currentProgress < endProgress) {
+              const ec = endProgress - currentProgress;
+              let step = Math.min(Math.max(ec / 5, 0.10), 0.40);
+              if (ec < 3) {
+                step = 0.02;
+              }
+              if (endProgress == 100) {
+                step = 0.75;
+              }
+              currentProgress += step;
+              currentProgress = Math.min(currentProgress, 100);
+              text.textContent = Math.round(currentProgress) + '%';
+              circle.style.transform = `rotate(-${originalAngle + currentProgress * 3}deg) scale(${currentProgress * 0.03 + 1})`;
+              window.requestAnimationFrame(stepAnimation);
+            }
+            else {
+              if (currentProgress < 100) {
+                window.requestAnimationFrame(stepAnimation);
+              }
+              if (currentProgress >= endProgress && endProgress >= 100) {
+                done = true;
+                hasSetLoading = false;
+                '';
+                circle.style.transition = 'all 600ms ease';
+                circle.style.transform = `rotate(-${originalAngle + 100 * 3 + 20}deg) scale(${100 * 0.03 + 1 + 6})`;
+                '';
+                let borderText = document.getElementById('border_text');
+                let loadingGif = document.getElementById('loading_gif');
+                borderText.style.scale = '0';
+                loadingGif.style.scale = '0';
+                borderText.style.animation = 'enterZoomIn 240ms ease reverse';
+                loadingGif.style.animation = 'enterZoomIn 240ms ease reverse';
+                '';
+                setTimeout(() => {
+                  loading.dataset.pg = 100;
+                  let maskLayerDom = document.createElement('div');
+                  let homepage = document.getElementsByTagName('flt-glass-pane')[0];
+                  const pageIsHomepage = isHomePage();
+                  const pageIsAI = isAI();
+                  const pageIsExpo = isExpo();
+                  if (pageIsHomepage || pageIsAI) {
+                    if (pageIsHomepage) {
+                      maskLayerDom.innerHTML = "<div class='mask-layer'></div>";
+                    }
+                    if (pageIsAI) {
+                      maskLayerDom.innerHTML = "<div class='mask-layer' style='border-color: #000000'></div>";
+                    }
+                    if (pageIsExpo) {
+                      maskLayerDom.innerHTML = "<div class='mask-layer' style='border-color: #0034c5'></div>";
+                    }
+                    maskLayerDom.style = "height: 100vh;width: 100vw;overflow: hidden;position: fixed;top: 0;left: 0;z-index:20;";
+                    document.body.insertBefore(maskLayerDom, homepage);
+                  }
+                  '';
+                  setTimeout(()=>{
+                    progressQueue = [];
+                    currentProgress = 50;
+                    endProgress = 50;
+                    loading.dataset.pg = 50;
+                    text.textContent = '50%';
+                    borderText.style.scale = '1';
+                    loadingGif.style.scale = '1';
+                    loadingGif.style.animation = '';
+                    borderText.style.animation = 'enterZoomIn 1s ease';
+                    circle.style.animation = 'enterZoomIn 1s ease';
+                    circle.style.transform = `rotate(-${originalAngle + 50 * 3}deg) scale(${50 * 0.03 + 1})`;
+                    document.getElementById('logomark').style.display = 'flex';
+                    loadingGif.style.display = 'none';
+                  }, 100);
+                  setTimeout(()=>{
+                    maskLayerDom.remove();
+                  }, 1000);
+                }, 100);
+              }
+            }
+          }
+          window.requestAnimationFrame(stepAnimation);
+        }
+
+
+        function updateDoraLoading(progress) {
+          window.dispatchEvent(new CustomEvent('dora_load_event', {
+            detail: {
+              time: Date.now(),
+              progress: progress,
+            }
+          }));
+        }
+        function switchToLoadingAnimation() {
+          let loadingGif = document.getElementById('loading_gif');
+          let logomark = document.getElementById('logomark');
+          if (!loadingGif) return;
+          logomark.style.display = 'none';
+          loadingGif.style.display = 'flex';
+          let borderText = document.getElementById('border_text');
+          if (!borderText) return;
+          borderText.style.animation = 'rotateRight 30s linear infinite';
+        }
+
+        var hasSetLoading = false;
+        var progressQueue = [];
+        var currentProgress = 0.0;
+        var endProgress = 0.0;
+        window.addEventListener('dora_load_event', function (e) {
+          if (!hasSetLoading) {
+            hasSetLoading = true;
+            if ((ishomepage || isAI() || isExpo()) && !disableloading) {
+              setTimeout(() => switchToLoadingAnimation(), 800);
+            }
+          }
+          renderDoraLoading(e.detail.progress);
+        });
+        window.updateDoraLoading = updateDoraLoading;
+        initLoadingMode();
+      })(window);
+    </script>
+
+    <script src="./Page_files/kiwi.min.js.download"></script>
+
+    
+    <script type="application/javascript">
+      (function (global) {
+        function canvaskitHook(canvaskit) {
+          var getGlyphIDs = canvaskit.Font.prototype.getGlyphIDs
+          var _empty = new Uint16Array()
+          canvaskit.Font.prototype.getGlyphIDs = function (str, numGlyphIDs, optionalOutputArray) {
+            if (!str) return _empty;
+            return getGlyphIDs.call(this, str, numGlyphIDs, optionalOutputArray);
+          }
+        }
+        function loadScript(src) {
+          return new Promise(function (resolve, reject) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+          });
+        }
+        function preload(src) {
+          return new Promise(function (resolve, reject) {
+            var el = document.createElement('link');
+            el.rel = 'preload';
+            el.href = src;
+            el.as = 'script';
+            document.head.appendChild(el);
+          });
+        }
+        '';
+        var canvaskitEntry = 'https://cdn-zip-us-aws-e.dora.run/canvaskit-wasm@0.37.1/bin/canvaskit.js';
+        if (window.flutterWebRenderer == 'canvaskit') {
+          preload("https://cdn-static-e.dora.run/dora_runner/main.dart.aac7e335b8d407d2.js");
+          preload(canvaskitEntry);
+
+          loadScript(canvaskitEntry)
+            .then(function () {
+              global.updateDoraLoading(10);
+              return global.CanvasKitInit();
+            }).then(function (canvaskit) {
+              global.flutterCanvasKit = canvaskit;
+              canvaskitHook(canvaskit);
+              global.updateDoraLoading(20);
+              return loadScript("https://cdn-static-e.dora.run/dora_runner/main.dart.aac7e335b8d407d2.js");
+            }).then(function () {
+              global.updateDoraLoading(50);
+            })
+        } else {
+          loadScript("https://cdn-static-e.dora.run/dora_runner/main.dart.aac7e335b8d407d2.js").then(function() {
+            global.updateDoraLoading(50);
+          })
+        }
+      })(window);
+    </script>
+    <script>
+      (function () {
+        if (!window.WebAssembly || !window.WebAssembly.Memory) return;
+        var Memory = WebAssembly.Memory;
+        var _grow = Memory.prototype.grow;
+        Memory.prototype.grow = function (n) {
+          var r = _grow.call(this, n);
+          if (r !== -1) {
+            var event = new CustomEvent('wasm-memory-grow', {
+              detail: {
+                size: this.buffer.byteLength
+              }
+            });
+            window.dispatchEvent(event);
+          }
+          return r;
+        };
+      })();
+    </script>
+    <!-- This script installs service_worker.js to provide PWA functionality to
+      application. For more information, see:
+      https://developers.google.com/web/fundamentals/primers/service-workers -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/flutter_service_worker.js');
+        });
+      }
+    </script>
+    <script>
+      (function (global) {
+        global.DoraEditor = {
+          onHotRestart: null,
+          hookHotRestart: function () {
+            var _fn = window.$dartHotRestartDwds;
+            if (_fn) {
+              window.$dartHotRestartDwds = (...args) => {
+                _fn.call(null, ...args)
+                if (typeof DoraEditor['onHotRestart'] == 'function') {
+                  DoraEditor['onHotRestart']();
+                }
+              }
+            }
+          }
+        };
+      })(window);
+    </script>
+
+    <script>
+      (function (global) {
+        global.doraKeyboard = {
+          checker: null,
+        };
+        window.addEventListener('keydown', function (event) {
+          if (typeof global.doraKeyboard.checker !== 'function') return;
+          if (event.ctrlKey || event.metaKey) {
+            global.doraKeyboard.checker(event);
+          }
+          if (event.keyCode == 8 && event.target == document.body) {
+            event.preventDefault();
+          }
+        }, { passive: false });
+        window.addEventListener('focus', function (event) {
+          if (typeof global.doraKeyboard['onFocus'] !== 'function') return;
+          global.doraKeyboard['onFocus'](event);
+        });
+        window.addEventListener('blur', function (event) {
+          if (typeof global.doraKeyboard['onBlur'] !== 'function') return;
+          global.doraKeyboard['onBlur'](event);
+        });
+      })(window);
+
+      window.addEventListener('mousewheel', function (event) {
+        if (event.ctrlKey === true || event.metaKey) {
+          event.preventDefault();
+        }
+      }, { passive: false });
+
+      window.addEventListener('wheel', function (event) {
+        if (event.ctrlKey === true || event.metaKey) {
+          event.preventDefault();
+        }
+      }, { passive: false });
+
+      //firefox
+      window.addEventListener('DOMMouseScroll', function (event) {
+        if (event.ctrlKey === true || event.metaKey) {
+          event.preventDefault();
+        }
+      }, { passive: false });
+    </script>
+
+<div class="seo-content" style="opacity: 0; white-space: pre">
+<p>The sting of a wasp should wear off within 24 hours, but for a small minority of people, the venom in their sting causes anaphylactic shock which can be fatal.</p>
+<p>Learn more</p>
+<p>Though wasp sting hurt, symptoms normally improve after a few hours but you may still feel irritation and swelling for a few days.</p>
+<p>02</p>
+<p>Though wasp stings hurt, symptoms normally improve after a few hours </p>
+<p>Wasp</p>
+<p>Wasp venom contains a pheromone that causes other wasps to become more aggressive. </p>
+<p>Linkedin</p>
+<a href="https://www.linkedin.com/in/minh-pham-9b67ba52/">'https://www.linkedin.com/in/minh-pham-9b67ba52/'</a>
+<p>Unlike many bee species, most wasps are capable of stinging numerous times because their stinger is not barbed.</p>
+<p>minhpham.design</p>
+<a href="https://minhpham.design/">'https://minhpham.design/'</a>
+<p>01</p>
+<p>About me</p>
+<p>Most wasps are capable of stinging numerous times</p>
+<p>Instagram</p>
+<a href="https://www.instagram.com/minhpham.design/">'https://www.instagram.com/minhpham.design/'</a>
+<p>Facebook</p>
+<a href="https://www.facebook.com/pham.d.minh">'https://www.facebook.com/pham.d.minh'</a>
+<p>Contact</p>
+<p>Unsplash</p>
+<a href="https://unsplash.com/@minhphamdesign">'https://unsplash.com/@minhphamdesign'</a>
+<p>Youtube</p>
+<a href="https://www.youtube.com/@MinhPhamDesign/">'https://www.youtube.com/@MinhPhamDesign/'</a>
+<p>We all know that wasps can sting repeatedly, but here are some facts about wasps you may not know</p>
+<p>03</p>
+<p>Minh Pham</p>
+
+</div>
+
+
+<flt-file-picker-inputs id="__file_picker_web-file-input"></flt-file-picker-inputs><flt-glass-pane style="position: absolute; inset: 0px; z-index: initial; cursor: default;"><template shadowrootmode="open"><style></style><flt-semantics-placeholder role="button" aria-live="polite" tabindex="0" aria-label="Enable accessibility" style="position: absolute; left: -1px; top: -1px; width: 1px; height: 1px;"></flt-semantics-placeholder><flt-scene-host style="pointer-events: none;"><flt-scene style="position: absolute;"><flt-transform style="position: absolute; transform-origin: 0px 0px 0px; transform: none;"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><canvas width="1924" height="946" style="position: absolute; width: 1539.2px; height: 756.8px; z-index: -1;"></canvas></flt-canvas></flt-picture><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-clip clip-type="rect" style="position: absolute; left: 0px; top: 0px; width: 1536px; height: 696px; overflow: hidden; z-index: 0;"><flt-clip-interior style="position: absolute; left: 0px; top: 0px;"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><draw-rect style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px); width: 1536px; height: 5050px; background-color: rgb(0, 173, 74);"></draw-rect></flt-picture><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(-303px, 259px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><canvas width="1212" height="1194" style="position: absolute; width: 969.6px; height: 955.2px; z-index: -1;"></canvas></flt-canvas></flt-picture></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1152.75px, 641px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><flt-paragraph style="position: absolute; white-space: pre; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1); left: 0px; top: 0px;"><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 0px; width: 30.72px; line-height: 26px;">We</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 30.72px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 35.12px; width: 21.72px; line-height: 26px;">all</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 56.84px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 61.24px; width: 50.12px; line-height: 26px;">know</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 111.36px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 115.76px; width: 38.22px; line-height: 26px;">that</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 153.98px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 158.38px; width: 60.98px; line-height: 26px;">wasps</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 219.36px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 223.76px; width: 36.14px; line-height: 26px;">can</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 0px; left: 259.9px; width: 0px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 0px; width: 45.94px; line-height: 26px;">sting</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 45.94px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 50.34px; width: 101.74px; line-height: 26px;">repeatedly</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 152.08px; width: 3.7px; line-height: 26px;">,</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 155.78px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 160.18px; width: 31.58px; line-height: 26px;">but</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 191.76px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 196.16px; width: 42.14px; line-height: 26px;">here</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 26px; left: 238.3px; width: 0px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 52px; left: 0px; width: 31.18px; line-height: 26px;">are</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 52px; left: 31.18px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 52px; left: 35.58px; width: 53.36px; line-height: 26px;">some</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 52px; left: 88.94px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 52px; left: 93.34px; width: 46.32px; line-height: 26px;">facts</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 52px; left: 139.66px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 52px; left: 144.06px; width: 56.3px; line-height: 26px;">about</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 52px; left: 200.36px; width: 0px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 0px; width: 60.98px; line-height: 26px;">wasps</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 60.98px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 65.38px; width: 34.98px; line-height: 26px;">you</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 100.36px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 104.76px; width: 43.58px; line-height: 26px;">may</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 148.34px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 152.74px; width: 30.78px; line-height: 26px;">not</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 183.52px; width: 4.4px; line-height: 26px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 20px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: -0.8px; position: absolute; top: 78px; left: 187.92px; width: 50.12px; line-height: 26px;">know</flt-span></flt-paragraph></flt-canvas></flt-picture><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset></flt-offset></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(383.25px, 2px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><draw-rect style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px); width: 1px; height: 696px; background-color: rgba(0, 0, 0, 0.3);"></draw-rect></flt-picture></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(767.5px, 1px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><draw-rect style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px); width: 1px; height: 696px; background-color: rgba(0, 0, 0, 0.3);"></draw-rect></flt-picture></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1151.75px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><draw-rect style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px); width: 1px; height: 696px; background-color: rgba(0, 0, 0, 0.3);"></draw-rect></flt-picture></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(61.5px, 49.1139px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1px, 178px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(72px, -1px);"><flt-paragraph style="position: absolute; white-space: pre; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, -72, 1); left: 0px; top: 0px;"><flt-span style="color: rgb(229, 212, 142); font-size: 450px; font-weight: bold; font-style: normal; font-family: &quot;Poppins|_|700&quot;, Arial, sans-serif; letter-spacing: -18px; position: absolute; top: 0px; left: 73.2px; width: 1263.6px; line-height: 22px;">Wasp</flt-span></flt-paragraph></flt-canvas></flt-picture><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-transform style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix3d(0.999992, -0.00401425, 0, 0, 0.00401425, 0.999992, 0, 0, 0.768, 0.349, 1, 0.001, -1.39478, 3.08575, 0, 1);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-clip clip-type="rrect" style="position: absolute; left: 0px; top: 0px; width: 1536px; height: 698px; border-radius: 0px; overflow: hidden; z-index: 0;"><flt-clip-interior style="position: absolute; left: 0px; top: 0px;"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-platform-view-slot style="pointer-events: auto; transform: translate(0px, 0px); width: 1536px; height: 698px; position: absolute;"><slot name="flt-pv-slot-0"></slot></flt-platform-view-slot></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-platform-view-slot style="pointer-events: auto; transform: translate(0px, 0px); width: 1536px; height: 698px; position: absolute;"><slot name="flt-pv-slot-1"></slot></flt-platform-view-slot></flt-offset></flt-clip-interior></flt-clip></flt-offset></flt-transform></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 494px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><div style="position: absolute; border-radius: 0px; overflow: hidden; width: 957px; height: 736px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1);"><div style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, -1, -1);"><div style="position: absolute; overflow: hidden; width: 957px; height: 736px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1);"><div style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, -1, -1);"><img src="https://cdn-design-e.dora.run/bQ/rL/dg/bQrLdg40Z6GQVFFYKcdvf.png" decoding="async" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, -63.9158, 1); left: 0px; top: 0px; width: 1086.83px; height: 736px;"></div></div></div></div></flt-canvas></flt-picture></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, -80px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><draw-rect style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px); width: 1536px; height: 82px; background-color: rgb(0, 173, 74);"></draw-rect></flt-picture></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1468px, 34px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(0px, -1px);"><div style="position: absolute; border-radius: 0px; overflow: hidden; width: 25px; height: 16px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 1);"><div style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, -1);"><img src="https://cdn-design-e.dora.run/Gw/av/Vu/GwavVuqywURG5io7JH7Idb.png" decoding="async" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1.97368, 1); left: 0px; top: 0px; width: 21.05px; height: 16px;"></div></div></flt-canvas></flt-picture></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(37px, 18px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(98px, 13px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><flt-paragraph style="position: absolute; white-space: pre; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1); left: 0px; top: 0px;"><flt-span style="color: rgb(3, 39, 20); font-size: 16px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: 0px; position: absolute; top: 0px; left: 0px; width: 48.54px; line-height: 21px;">About</flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 16px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: 0px; position: absolute; top: 0px; left: 48.54px; width: 4.16px; line-height: 21px;"> </flt-span><flt-span style="color: rgb(3, 39, 20); font-size: 16px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: 0px; position: absolute; top: 0px; left: 52.7px; width: 26.5px; line-height: 21px;">me</flt-span></flt-paragraph></flt-canvas></flt-picture><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(9px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><div style="position: absolute; border-radius: 0px; overflow: hidden; width: 48px; height: 42px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1);"><div style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, -1, -1);"><img src="https://cdn-design-e.dora.run/HK/x9/Z0/HKx9Z0ua7FoGL5DpWkUEya.png" decoding="async" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1);"></div></div></flt-canvas></flt-picture></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(18px, 26px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><div style="position: absolute; border-radius: 0px; overflow: hidden; width: 11.45px; height: 3.21px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1);"><div style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, -1, -1);"><img src="https://cdn-design-e.dora.run/I2/N4/Mw/I2N4MwnUS9ZGcXNtd2Huad.png" decoding="async" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1.91, 1); left: 0px; top: 0px; width: 9.63px; height: 3.21px;"></div></div></flt-canvas></flt-picture></flt-offset></flt-offset></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(219px, 13px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><flt-paragraph style="position: absolute; white-space: pre; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1); left: 0px; top: 0px;"><flt-span style="color: rgb(3, 39, 20); font-size: 16px; font-weight: 500; font-style: normal; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; letter-spacing: 0px; position: absolute; top: 0px; left: 0px; width: 65.31px; line-height: 21px;">Contact</flt-span></flt-paragraph></flt-canvas></flt-picture><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset></flt-offset></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1393px, 30px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture><flt-clip clip-type="rrect" style="position: absolute; left: 0px; top: 0px; width: 24px; height: 24px; border-radius: 0px; overflow: hidden; z-index: 0;"><flt-clip-interior style="position: absolute; left: 0px; top: 0px;"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(2px, 1px);"><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><div style="position: absolute; border-radius: 0px; overflow: hidden; width: 19.5px; height: 22.5px; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1);"><div style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, -1, -1);"><img src="https://cdn-design-e.dora.run/JJ/ia/ei/JJiaeik5dNlHspJT6plHt2.png" decoding="async" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1.61364); left: 0px; top: 0px; width: 19.5px; height: 21.27px;"></div></div></flt-canvas></flt-picture></flt-offset></flt-offset></flt-clip-interior></flt-clip></flt-offset></flt-offset></flt-offset></flt-clip-interior></flt-clip></flt-offset></flt-offset><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"></flt-picture></flt-offset></flt-offset></flt-offset></flt-offset><flt-offset style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(1367px, 632px);"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><draw-rrect style="position: absolute; transform-origin: 0px 0px 0px; transform: translate(0px, 0px); filter: blur(5.1188px); width: 137px; height: 32px; background-color: rgba(0, 0, 0, 0.1); border-radius: 8px;"></draw-rrect></flt-picture><flt-clip clip-type="rrect" style="position: absolute; left: 0px; top: 0px; width: 137px; height: 32px; border-radius: 8px; overflow: hidden; z-index: 0;"><flt-clip-interior style="position: absolute; left: 0px; top: 0px;"><flt-backdrop style="position: absolute; transform-origin: 0px 0px 0px;"><flt-backdrop-filter style="position: absolute; transform-origin: 0px 0px 0px; left: 0px; top: 0px; width: 137px; height: 32px; backdrop-filter: blur(4px);"></flt-backdrop-filter><flt-backdrop-interior style="position: absolute;"><flt-picture aria-hidden="true" style="position: absolute; transform: translate(0px, 0px);"><flt-canvas style="position: absolute; transform: translate(-1px, -1px);"><draw-rrect style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 1, 1); width: 137px; height: 32px; background-color: rgba(255, 255, 255, 0.898); border-radius: 8px;"></draw-rrect><img src="blob:https://7nqdg1dy.dora.run/95b3f437-cf78-45e2-bd44-55105075f676" decoding="async" style="position: absolute; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 9.16393, 7); left: 0px; top: 0px; width: 19.67px; height: 20px;"><flt-paragraph style="position: absolute; white-space: pre; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 35, 8); left: 0px; top: 0px;"><flt-span style="color: rgb(0, 0, 0); font-size: 14px; font-weight: 600; font-family: &quot;Poppins|_|600&quot;, Arial, sans-serif; text-decoration: double rgb(255, 255, 0); position: absolute; top: 0px; left: 0px; width: 40.21px; line-height: 18px;">Made</flt-span><flt-span style="color: rgb(0, 0, 0); font-size: 14px; font-weight: 600; font-family: &quot;Poppins|_|600&quot;, Arial, sans-serif; text-decoration: double rgb(255, 255, 0); position: absolute; top: 0px; left: 40.21px; width: 3.33px; line-height: 18px;"> </flt-span><flt-span style="color: rgb(0, 0, 0); font-size: 14px; font-weight: 600; font-family: &quot;Poppins|_|600&quot;, Arial, sans-serif; text-decoration: double rgb(255, 255, 0); position: absolute; top: 0px; left: 43.54px; width: 13.15px; line-height: 18px;">in</flt-span><flt-span style="color: rgb(0, 0, 0); font-size: 14px; font-weight: 600; font-family: &quot;Poppins|_|600&quot;, Arial, sans-serif; text-decoration: double rgb(255, 255, 0); position: absolute; top: 0px; left: 56.69px; width: 3.33px; line-height: 18px;"> </flt-span><flt-span style="color: rgb(0, 0, 0); font-size: 14px; font-weight: 600; font-family: &quot;Poppins|_|600&quot;, Arial, sans-serif; text-decoration: double rgb(255, 255, 0); position: absolute; top: 0px; left: 60.02px; width: 34.12px; line-height: 18px;">Dora</flt-span></flt-paragraph></flt-canvas></flt-picture></flt-backdrop-interior></flt-backdrop></flt-clip-interior></flt-clip></flt-offset></flt-offset></flt-offset></flt-transform></flt-scene></flt-scene-host><flt-semantics-host style="position: absolute; transform-origin: 0px 0px 0px; transform: scale(0.8);"></flt-semantics-host><flt-ruler-host style="position: fixed; visibility: hidden; overflow: hidden; top: 0px; left: 0px; width: 0px; height: 0px;"><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 400px; font-family: &quot;Poppins|_|600&quot;, Arial, sans-serif; line-height: 1; white-space: pre;"> </flt-paragraph><div></div></div><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 400px; font-family: &quot;Poppins|_|700&quot;, Arial, sans-serif; line-height: 0.055; white-space: pre;"> </flt-paragraph><div></div></div><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 20px; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; line-height: 1.3; white-space: pre;"> </flt-paragraph><div></div></div><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 20px; font-family: &quot;Poppins|_|600&quot;, Arial, sans-serif; line-height: 1.3; white-space: pre;"> </flt-paragraph><div></div></div><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 450px; font-family: &quot;Poppins|_|700&quot;, Arial, sans-serif; line-height: 0.0488889; white-space: pre;"> </flt-paragraph><div></div></div><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 64px; font-family: &quot;Poppins|_|700&quot;, Arial, sans-serif; line-height: 1; white-space: pre;"> </flt-paragraph><div></div></div><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 60px; font-family: &quot;Poppins|_|700&quot;, Arial, sans-serif; line-height: 1.06667; white-space: pre;"> </flt-paragraph><div></div></div><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 16px; font-family: &quot;Poppins|_|500&quot;, Arial, sans-serif; line-height: 1.3125; white-space: pre;"> </flt-paragraph><div></div></div><div style="visibility: hidden; position: absolute; top: 0px; left: 0px; display: flex; flex-direction: row; align-items: baseline; margin: 0px; border: 0px; padding: 0px;"><flt-paragraph style="font-size: 14px; font-family: &quot;Poppins|_|600&quot;, Arial, sans-serif; line-height: 1.28571; white-space: pre;"> </flt-paragraph><div></div></div></flt-ruler-host></template><flt-platform-view slot="flt-pv-slot-0"><iframe id="iframe_channel_Wboqf7c6x" src="./Page_files/index.html" style="border: none; cursor: inherit; height: 100%; width: 100%;"></iframe></flt-platform-view><flt-platform-view slot="flt-pv-slot-1"><div style="width: 100%; height: 100%;"></div></flt-platform-view></flt-glass-pane><script id="performance-report">      (function () {
+        var performance = window.performance;
+        if (typeof performance == 'undefined' || typeof PerformanceObserver == 'undefined') {
+          return;
+        }
+        var performanceObserver = new PerformanceObserver(function (list) {
+          var entries = list.getEntries();
+          var event = new CustomEvent('performance-report', {
+            detail: {
+              entries: entries,
+            }
+          });
+          window.dispatchEvent(event);
+        });
+        performanceObserver.observe({
+          entryTypes: ['resource'],
+        });
+
+        window.addEventListener('performance-report-dispose', function (e) {
+          if (performanceObserver) {
+            performanceObserver.disconnect();
+            performanceObserver = null;
+          }
+        });
+      })();
+    </script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+  div.grammarly-desktop-integration {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  div.grammarly-desktop-integration:before {
+    content: attr(data-content);
+  }
+</style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
